@@ -17,13 +17,22 @@
  */
 
 #include <QtGui/QApplication>
-#include <QtGui/QLabel>
+#include <QTranslator>
+#include <QLocale>
+#include <QLabel>
+
+const QString TS_PREFIX("mingmu_");
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    QLabel label("Hello World!");
+    // Setup translator
+    QTranslator translator;
+    translator.load(TS_PREFIX + QLocale::system().name(), ":/ts/");
+    app.installTranslator(&translator);
+
+    QLabel label(QLabel::tr("Hello world!"));
     label.show();
 
     return app.exec();

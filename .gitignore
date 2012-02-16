@@ -1,1 +1,11 @@
-build
+*.qm
+ts/resources-ts.qrc
+bin/
+build/
+win32/
+cmakeqt
+*.o
+contribs/downloads
+contribs/bin
+contribs/include
+contribs/lib

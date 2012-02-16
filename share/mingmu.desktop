@@ -1,0 +1,10 @@
+
+[Desktop Entry]
+Name=Mingmu
+Comment=Aria2 based GUI download manager
+Exec=mingmu %U
+Icon=mingmu
+Terminal=false
+Type=Application
+Categories=Qt;Network;FileTransfer;P2P
+Name[zh_CN]=瞑目
