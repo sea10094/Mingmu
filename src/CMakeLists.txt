@@ -9,6 +9,8 @@ SET(MINGMU_SRCS
 )
 
 SET(MINGMU_HDRS
+    logging.h
+    mingmu.h
 )
 
 #Put here QRC files to be Rcc-ed
