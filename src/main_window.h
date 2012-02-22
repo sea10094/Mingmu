@@ -23,6 +23,11 @@
 
 #include "mingmu.h"
 
+class QToolBar;
+class QTreeView;
+class QListView;
+class QStandardItemModel;
+
 class MainWindow: public QMainWindow {
     Q_OBJECT
 
@@ -36,9 +41,14 @@ private:
     void createActions();
     void createToolBar();
 
-    QToolBar *toolbar;
     QAction *taskNewAction;
     QAction *quitAction;
+
+    QToolBar *toolbar;
+    QTreeView *serverView;
+    QStandardItemModel *serverModel;
+    QListView *taskView;
+    QStandardItemModel *taskModel;
 };
 
 #endif // MAIN_WINDOW_H

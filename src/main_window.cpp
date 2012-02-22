@@ -22,8 +22,19 @@
 
 MainWindow::MainWindow()
 {
+    setMinimumSize(650, 450);
     createActions();
     createToolBar();
+
+    QSplitter *splitter = new QSplitter(this);
+    setCentralWidget(splitter);
+
+    serverView = new QTreeView(splitter);
+    serverView->setFixedWidth(180);
+    splitter->addWidget(serverView);
+
+    taskView = new QListView(splitter);
+    splitter->addWidget(taskView);
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
@@ -52,6 +63,4 @@ void MainWindow::createToolBar()
 
     QDEBUG << "ToolBar created.";
 }
-
-#include "main_window.moc"
 
