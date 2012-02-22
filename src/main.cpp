@@ -23,6 +23,7 @@
 #include <QtDebug>
 
 #include "mingmu.h"
+#include "main_window.h"
 
 const QString TS_PREFIX("mingmu_");
 
@@ -61,8 +62,8 @@ int main(int argc, char *argv[])
 
     initTranslator();
 
-    QLabel label(QLabel::tr("Hello world!"));
-    label.show();
+    MainWindow window;
+    window.show();
 
     QDEBUG << "Application initialized.";
 

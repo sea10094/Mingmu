@@ -6,11 +6,13 @@
 #Put here CPPs
 SET(MINGMU_SRCS
     main.cpp
+    main_window.cpp
 )
 
 SET(MINGMU_HDRS
     logging.h
     mingmu.h
+    main_window.h
 )
 
 #Put here QRC files to be Rcc-ed
