@@ -6,9 +6,13 @@
 #Put here CPPs
 SET(MINGMU_SRCS
     main.cpp
+    main_window.cpp
 )
 
 SET(MINGMU_HDRS
+    logging.h
+    mingmu.h
+    main_window.h
 )
 
 #Put here QRC files to be Rcc-ed
@@ -32,7 +36,7 @@ SET(MINGMU_UIS
 
 QT4_WRAP_UI(MINGMU_UIS_H ${MINGMU_UIS})
 QT4_ADD_RESOURCES(MINGMU_RCC_SRCS ${MINGMU_RCC})
-QT4_AUTOMOC(MINGMU_MOC_SRCS ${MINGMU_SRCS})
+QT4_WRAP_CPP(MINGMU_MOC_SRCS ${MINGMU_HDRS})
 
 IF( MINGW )
     # resource compilation for MinGW

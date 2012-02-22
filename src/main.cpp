@@ -20,20 +20,52 @@
 #include <QTranslator>
 #include <QLocale>
 #include <QLabel>
+#include <QtDebug>
+
+#include "mingmu.h"
+#include "main_window.h"
 
 const QString TS_PREFIX("mingmu_");
 
-int main(int argc, char *argv[])
+void messageHandler(QtMsgType type, const char *msg)
 {
-    QApplication app(argc, argv);
+    switch (type) {
+        case QtDebugMsg:
+            fprintf(stderr, "[DEBUG] %s\n", msg);
+            break;
+        case QtWarningMsg:
+            fprintf(stderr, "[WARNING] %s\n", msg);
+            break;
+        case QtCriticalMsg:
+            fprintf(stderr, "[CRITICAL] %s\n", msg);
+            break;
+        case QtFatalMsg:
+            fprintf(stderr, "[FATAL] %s\n", msg);
+            abort();
+    }
+}
 
-    // Setup translator
+void initTranslator()
+{
     QTranslator translator;
     translator.load(TS_PREFIX + QLocale::system().name(), ":/ts/");
-    app.installTranslator(&translator);
+    qApp->installTranslator(&translator);
+}
 
-    QLabel label(QLabel::tr("Hello world!"));
-    label.show();
+int main(int argc, char *argv[])
+{
+    qInstallMsgHandler(messageHandler);
+
+    QDEBUG << "Initializing application.";
+
+    QApplication app(argc, argv);
+
+    initTranslator();
+
+    MainWindow window;
+    window.show();
+
+    QDEBUG << "Application initialized.";
 
     return app.exec();
 }
