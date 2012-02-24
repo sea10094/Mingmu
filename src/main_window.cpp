@@ -45,10 +45,21 @@ void MainWindow::closeEvent(QCloseEvent *event)
 void MainWindow::createActions()
 {
     QDEBUG << "Creating actions...";
-    taskNewAction = new QAction(QIcon::fromTheme("document-new"),
+    
+    taskNewAction   = new QAction(QIcon::fromTheme("document-new"),
             tr("&New Task"), this);
+    taskStartAction = new QAction(QIcon::fromTheme("media-playback-start"), 
+            tr("Start Task"),this);
+    taskPauseAction = new QAction(QIcon::fromTheme("media-playback-pause"), 
+            tr("Pause Task"),this);
+    taskRemoveAction = new QAction(QIcon::fromTheme("edit-delete"), 
+            tr("Remove Task"),this);
+    
+    aboutAction = new QAction(QIcon::fromTheme("help-about"),
+            tr("About"), this);
     quitAction = new QAction(QIcon::fromTheme("application-exit"),
             tr("&Quit"), this);
+
     QDEBUG << "Actions created.";
 }
 
@@ -57,10 +68,15 @@ void MainWindow::createToolBar()
     QDEBUG << "Creating ToolBar...";
 
     toolbar = addToolBar(tr("Main"));
+
     toolbar->addAction(taskNewAction);
     toolbar->addSeparator();
+    toolbar->addAction(taskStartAction);
+    toolbar->addAction(taskPauseAction);
+    toolbar->addAction(taskRemoveAction);
+    toolbar->addSeparator();
+    toolbar->addAction(aboutAction);
     toolbar->addAction(quitAction);
 
     QDEBUG << "ToolBar created.";
 }
-

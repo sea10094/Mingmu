@@ -41,14 +41,19 @@ private:
     void createActions();
     void createToolBar();
 
-    QAction *taskNewAction;
+    QAction *aboutAction;
     QAction *quitAction;
-
+    
     QToolBar *toolbar;
     QTreeView *serverView;
     QStandardItemModel *serverModel;
     QListView *taskView;
     QStandardItemModel *taskModel;
+    
+    QAction *taskStartAction;
+    QAction *taskPauseAction;
+    QAction *taskRemoveAction;
+    QAction *taskNewAction;    
 };
 
 #endif // MAIN_WINDOW_H
